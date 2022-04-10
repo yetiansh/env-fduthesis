@@ -14,7 +14,7 @@ compile="${engine} ${source}.tex && bibtex ${source}.aux &&
     ${engine} ${source}.tex && ${engine} ${source}.tex"
 
 id=$(docker run -it -d ${image})
-docker cp ${dir} "${id}:${home}"
+docker cp ${full_dir} "${id}:${home}"
 docker exec -i ${id} /bin/bash -c \
     "cp ${resources}/fudan-name.pdf ${base_dir} && cd ${home}/${base_dir} && ${compile}"
 docker cp "${id}:${home}/${base_dir}/${source}.pdf" ${full_dir}/
