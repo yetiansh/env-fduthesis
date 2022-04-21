@@ -1,2 +1,11 @@
 # Add desired packages here. 
 # Packages should be seperated by space or line break.
+bookmark
+subfigure
+enumitem
+appendix
+cleveref
+algorithm2e
+ifoddpage
+relsize
+algorithms

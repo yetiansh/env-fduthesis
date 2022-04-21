@@ -19,11 +19,11 @@ RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && 
     ln -s ${HOME}/texlive/20*/bin/*/ ${BIN} && \
     cd ${HOME} && rm install-tl-unx.tar.gz && rm -r install-tl-*
 RUN cat ${RESOURCES}/packages-basic ${RESOURCES}/packages-to-add >> ${RESOURCES}/packages-to-install && \
-    tlmgr update texlive-scripts && tlmgr install $(sed '/#/'d ${RESOURCES}/packages-to-install | tr '\n' ' ')
+    tlmgr install $(sed '/#/'d ${RESOURCES}/packages-to-install | tr '\n' ' ')
 
 # install fduthesis
-# ENV GIT_MIRROR=https://github.com
-ENV GIT_MIRROR=https://hub.fastgit.xyz
+# ENV GIT_MIRROR=https://gitclone.com/github.com
+ENV GIT_MIRROR=https://github.com
 RUN git clone ${GIT_MIRROR}/yetiansh/fduthesis.git
 RUN cd fduthesis/source && xetex fduthesis.dtx && \
     mkdir ${MF_HOME} && cp *.cls *.def *.sty ${MF_HOME} && mktexlsr
