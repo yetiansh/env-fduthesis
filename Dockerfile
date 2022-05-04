@@ -22,8 +22,7 @@ RUN cat ${RESOURCES}/packages-basic ${RESOURCES}/packages-to-add >> ${RESOURCES}
     tlmgr update texlive-scripts && tlmgr install $(sed '/#/'d ${RESOURCES}/packages-to-install | tr '\n' ' ')
 
 # install fduthesis
-# ENV GIT_MIRROR=https://github.com
-ENV GIT_MIRROR=https://hub.fastgit.xyz
+ENV GIT_MIRROR=https://gitee.com
 RUN git clone ${GIT_MIRROR}/yetiansh/fduthesis.git
 RUN cd fduthesis/source && xetex fduthesis.dtx && \
     mkdir ${MF_HOME} && cp *.cls *.def *.sty ${MF_HOME} && mktexlsr
